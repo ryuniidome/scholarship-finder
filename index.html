@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留学奨学金診断</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>留学奨学金診断</h1>
+      <p class="subtitle">6つの質問に答えるだけで、あなたに合った奨学金が見つかります</p>
+    </header>
+
+    <!-- 診断セクション -->
+    <div id="quiz-section">
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <p class="step-label" id="step-label">質問 1 / 6</p>
+      </div>
+
+      <div class="question-card" id="question-card"></div>
+
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" id="btn-back" onclick="prevStep()">← 戻る</button>
+        <button class="btn btn-primary" id="btn-next" onclick="nextStep()" disabled>次へ →</button>
+      </div>
+    </div>
+
+    <!-- 結果セクション -->
+    <div id="result-section" style="display:none">
+      <div class="result-header">
+        <h2>診断結果</h2>
+        <p id="result-summary" class="result-summary"></p>
+      </div>
+      <div id="scholarship-list"></div>
+      <div class="result-footer">
+        <p class="disclaimer">※ 掲載情報は参考情報です。金額・締切・条件は変更される場合があります。必ず公式サイトでご確認ください。</p>
+        <button class="btn btn-secondary" onclick="resetQuiz()">← もう一度診断する</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
