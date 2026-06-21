@@ -1,0 +1,54 @@
+  name: 奨学金サイト監視                                                                                                                                                 
+                                                                                                                                                                         
+  on:                                                                                                                                                                    
+    schedule:                                                                                                                                                            
+      - cron: '0 0 * * 1'                                                                                                                                                
+    workflow_dispatch:                                                                                                                                                   
+                                                                                                                                                                         
+  jobs:                                                                                                                                                                  
+    monitor:                                                                                                                                                             
+      runs-on: ubuntu-latest                                                                                                                                             
+      permissions:                                                                                                                                                       
+        contents: write                                                                                                                                                  
+        issues: write                                                                                                                                                    
+                                                                                                                                                                         
+      steps:
+        - uses: actions/checkout@v4
+                                                                                                                                                                         
+        - name: Python セットアップ
+          uses: actions/setup-python@v5                                                                                                                                  
+          with:                                                                                                                                                        
+            python-version: '3.11'
+                                                                                                                                                                         
+        - name: 監視スクリプト実行
+          id: monitor                                                                                                                                                    
+          run: |                                                                                                                                                       
+            python scripts/monitor.py 2>&1
+            echo "exit_code=$?" >> $GITHUB_OUTPUT                                                                                                                        
+          continue-on-error: true
+                                                                                                                                                                         
+        - name: ハッシュファイルをコミット                                                                                                                             
+          run: |                                                                                                                                                         
+            git config user.name "github-actions[bot]"                                                                                                                   
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add scripts/hashes.json                                                                                                                                  
+            git diff --staged --quiet || git commit -m "chore: ハッシュ更新 $(date +'%Y-%m-%d')"                                                                       
+            git push                                                                                                                                                     
+                                                                                                                                                                       
+        - name: 変更があればIssueを作成                                                                                                                                  
+          if: ${{ steps.monitor.outputs.exit_code == '1' }}                                                                                                            
+          env:                                                                                                                                                           
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}                                                                                                                      
+          run: |                                                                                                                                                         
+            BODY=$(python3 -c "
+            import json                                                                                                                                                  
+            with open('scripts/changes.json') as f:                                                                                                                    
+                changes = json.load(f)                                                                                                                                   
+            lines = ['以下の奨学金サイトに変更が検知されました。内容を確認して data/scholarships.json を更新してください。', '']
+            for c in changes:                                                                                                                                            
+                lines.append(f\"- [{c['name']}]({c['url']}) — {c['note']}\")                                                                                             
+            print('\n'.join(lines))                                                                                                                                      
+            ")                                                                                                                                                           
+            gh issue create \                                                                                                                                            
+              --title "奨学金サイト更新検知 $(date +'%Y-%m-%d')" \                                                                                                       
+              --body "$BODY"
