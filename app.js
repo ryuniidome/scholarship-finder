@@ -239,6 +239,7 @@ function showResults() {
           </div>
         </div>
         <p class="description">${s.description}</p>
+        ${s.career_changer_status ? `<p class="meta-item"><span class="career-badge career-${s.career_changer_status}">${careerChangerLabel(s.career_changer_status)}</span> ${s.career_changer_note}</p>` : ''}
         ${s.language_requirement ? `<p class="meta-item"><span class="meta-label">英語要件：</span>${s.language_requirement}</p>` : ''}
         ${s.num_recipients ? `<p class="meta-item"><span class="meta-label">募集人数：</span>${s.num_recipients}</p>` : ''}
         ${s.combinable ? `<p class="meta-item"><span class="meta-label">他奨学金との併給：</span>${s.combinable}</p>` : ''}
@@ -252,6 +253,10 @@ function showResults() {
 
 function categoryLabel(cat) {
   return { government: '政府・公的機関', private: '民間財団', destination: '留学先国・機関' }[cat] || cat;
+}
+
+function careerChangerLabel(status) {
+  return { ok: '◎ 社会人も応募しやすい', caution: '△ 社会人は要注意（年齢制限等）', unconfirmed: '？ 社会人可否は要確認' }[status] || status;
 }
 
 function resetQuiz() {
