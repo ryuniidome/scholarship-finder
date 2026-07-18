@@ -7,7 +7,6 @@ const questions = [
     id: 'degree',
     question: '現在の学年・学位を教えてください',
     options: [
-      { value: 'middle_school', label: '中学生' },
       { value: 'high_school', label: '高校生' },
       { value: 'undergraduate', label: '大学生（学部）' },
       { value: 'masters', label: '修士課程（大学院）' },
