@@ -10,8 +10,7 @@ const questions = [
       { value: 'high_school', label: '高校生' },
       { value: 'undergraduate', label: '大学生（学部）' },
       { value: 'masters', label: '修士課程（大学院）' },
-      { value: 'phd', label: '博士課程（大学院）' },
-      { value: 'other', label: 'その他（社会人・研究生など）' }
+      { value: 'phd', label: '博士課程（大学院）' }
     ]
   },
   {

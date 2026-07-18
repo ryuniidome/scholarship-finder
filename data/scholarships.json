@@ -630,7 +630,7 @@
       "description": "音楽・美術・映画・舞台芸術・メディア芸術などの分野で海外研修を行う若手芸術家を支援する文化庁の制度。",
       "notes": "大学院在籍・卒業問わず応募可能（芸術家としての実績が重視される）。分野ごとに推薦機関を通じて申請。",
       "eligibility": {
-        "degree_levels": ["undergraduate", "masters", "phd", "other"],
+        "degree_levels": ["undergraduate", "masters", "phd"],
         "regions": ["any"],
         "purposes": ["research", "degree"],
         "duration_months": { "min": 6, "max": 24 },
@@ -1400,7 +1400,7 @@
       "combinable": "要確認",
       "post_obligation": "帰国後の報告・啓発活動への参加",
       "eligibility": {
-        "degree_levels": ["undergraduate", "masters", "phd", "other"],
+        "degree_levels": ["undergraduate", "masters", "phd"],
         "regions": ["any"],
         "purposes": ["language", "degree", "research", "career"],
         "duration_months": { "min": 1, "max": 12 },
@@ -1564,7 +1564,7 @@
       "description": "博士号取得後5年未満の若手研究者が、海外の大学・研究機関で研究活動を行うことを支援する制度。生活費・研究活動費に加え往復航空券が支給される。",
       "notes": "博士課程在籍者は学位取得見込みでの予約採用も可能。常勤研究職としての勤務経験が通算5年未満であることが条件。所属研究機関の推薦が必要。",
       "eligibility": {
-        "degree_levels": ["phd", "other"],
+        "degree_levels": ["phd"],
         "regions": ["any"],
         "purposes": ["research"],
         "duration_months": { "min": 24, "max": 24 },
@@ -1585,7 +1585,7 @@
       "notes": "英語教員免許保持者、または語学教育に関心のある者が対象。TOEFL iBT 79〜80点以上またはIELTS 6.0以上が必要。競争率が高い。",
       "language_requirement": "TOEFL iBT 79〜80以上またはIELTS 6.0以上",
       "eligibility": {
-        "degree_levels": ["undergraduate", "other"],
+        "degree_levels": ["undergraduate"],
         "regions": ["north_america"],
         "purposes": ["language", "career"],
         "duration_months": { "min": 9, "max": 9 },
