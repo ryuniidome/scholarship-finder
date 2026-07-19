@@ -70,15 +70,13 @@ scholarship-finder/
 
 マッチングロジックは`app.js`の`matchesScholarship()`関数がすべて。フィールドを追加する場合はここも合わせて修正が必要です。
 
-## 4. 現在のデプロイ状況（要確認）
+## 4. 現在のデプロイ状況
 
 現在Netlifyでホスティングしており、GitHubの`main`ブランチにpushすると自動デプロイされます（ビルド設定なし）。
 
-**確認・整理をお願いしたい点**: Netlifyアカウント上に、このリポジトリからデプロイされているプロジェクトが2つ存在する可能性があります。
-- `pitatobi-scholarship.netlify.app`（直近のセッションで作成）
-- `fantastic-cascaron-41ac98.netlify.app`（別セッションで以前作成された可能性あり）
+公開URL: https://pitatobi-scholarship.netlify.app/
 
-どちらが本番として使われているか、重複していないかをNetlifyダッシュボード（Raigateチーム）で確認し、不要な方があれば削除してください。
+（以前、同じリポジトリから重複してデプロイされていた`fantastic-cascaron-41ac98.netlify.app`は削除済みです）
 
 ## 5. 今回の依頼: サブドメインへの移管
 
